@@ -7,23 +7,16 @@ class Solution:
     def SecondLargest(self,array):
         if len(array)<=1:
             return -1
-        # to find Second Largest we need to find unique elements and maximum of array
+        # to find Second Largest we need to find  maximum of array along with second max
         maximum = float('-inf')
-        uniqueElements = []
-        for i in range(len(array)):
-            if array[i] not in uniqueElements:
-                uniqueElements.append(array[i])
-            if array[i]>maximum:
-                maximum=array[i]
-        if len(uniqueElements)==1:
-            return -1
-        #find the Second maximum
-        else:
-            SecondMax=float('-inf')
-            for element in uniqueElements:
-                if element>SecondMax and element<maximum:
-                    SecondMax=element
-            return  SecondMax
+        SecondMax=float('-inf')
+        for element in array:
+            if element>maximum:
+                SecondMax=maximum
+                maximum=element
+            if element>SecondMax and element< maximum:
+                SecondMax = element
+        return SecondMax if SecondMax != float('-inf') else -1
 
 
 if __name__ == "__main__":
